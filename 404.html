@@ -1035,7 +1035,8 @@
           kind: 'Single', tracks: 1, genre: 'Amapiano / Afro-groove', label: 'Storytakeflow', releaseDate: 'October 31, 2026',
           description: 'An amapiano song about perseverance: keep walking, keep believing.',
           artwork: '/assets/embedded/2abded05bac304ea.jpg', alt: 'Keep Walking cover art showing a lone traveler walking a lakeside path toward sunrise, with baobab trees',
-          url: 'https://distrokid.com/hyperfollow/storytakeflow/keep-walking', linkLabel: 'Listen to Keep Walking'
+          url: '', linkLabel: '',
+          note: 'Streaming link unavailable right now'
         },
         {
           id: 'you-can-do-it', featured: false, status: 'Single · Out now', title: 'You Can Do It', artist: 'Martin Dhanda',
@@ -1103,7 +1104,7 @@
           id: 'keep-walking', title: 'Keep Walking', artist: 'Martin Dhanda', genre: 'Amapiano / Afro-groove',
           releaseDate: 'October 31, 2026', datePublished: '2026-10-31', label: 'Storytakeflow',
           artwork: '/assets/embedded/2abded05bac304ea.jpg', alt: 'Keep Walking cover art showing a lone traveler walking a lakeside path toward sunrise, with baobab trees',
-          listenUrl: 'https://distrokid.com/hyperfollow/storytakeflow/keep-walking', listenLabel: 'Listen to Keep Walking',
+          listenUrl: '', listenLabel: '',
           sections: [
             { heading: 'Spoken Intro', lines: ["Listen — the road was never promised easy.", "But every step you take in faith", "is a step the darkness cannot take back."] },
             { heading: 'Verse 1', lines: ["I have walked through nights with no moon in the sky,", "Carried questions heavy, still I held my head high.", "Feet were tired, heart was sore,", "But I heard a voice say, “Son, there's more.”"] },
@@ -1238,7 +1239,7 @@
           recordLabel: { '@type': 'Organization', name: song.label },
           datePublished: song.datePublished || undefined,
           image: new URL(route.root + song.artwork, window.location.href).href,
-          subjectOf: song.listenUrl,
+          subjectOf: song.listenUrl || undefined,
           recordingOf: { '@type': 'MusicComposition', name: song.title, lyricist: { '@type': 'Person', name: song.artist }, lyrics: { '@type': 'CreativeWork', text: plainLyrics } }
         };
         var ld = document.createElement('script');
@@ -1257,8 +1258,8 @@
           '<aside class="lyrics-side" aria-label="Recording details" data-reveal><div class="lyrics-art"><img src="' + route.root + song.artwork + '" alt="' + escapeHtml(song.alt) + '"></div>' +
           '<div><dl><div><dt>Artist</dt><dd>' + escapeHtml(song.artist) + '</dd></div><div><dt>Genre</dt><dd>' + escapeHtml(song.genre) + '</dd></div>' +
           (song.releaseDate ? '<div><dt>Released</dt><dd>' + escapeHtml(song.releaseDate) + '</dd></div>' : '') +
-          '<div><dt>Label</dt><dd>' + escapeHtml(song.label) + '</dd></div></dl><a class="btn btn-primary" href="' + song.listenUrl + '" target="_blank" rel="noopener"><span class="play" aria-hidden="true"></span>' + escapeHtml(song.listenLabel) + '</a>' +
-          '<a class="btn btn-whatsapp lyrics-dedication" href="' + dedicationHref(song.title, song.artist, song.listenUrl) + '" target="_blank" rel="noopener" aria-label="Send ' + escapeHtml(song.title) + ' to someone on WhatsApp">' + SEND_ICON + 'Send this song to someone</a></div></aside>' +
+          '<div><dt>Label</dt><dd>' + escapeHtml(song.label) + '</dd></div></dl>' + (song.listenUrl ? '<a class="btn btn-primary" href="' + song.listenUrl + '" target="_blank" rel="noopener"><span class="play" aria-hidden="true"></span>' + escapeHtml(song.listenLabel) + '</a>' +
+          '<a class="btn btn-whatsapp lyrics-dedication" href="' + dedicationHref(song.title, song.artist, song.listenUrl) + '" target="_blank" rel="noopener" aria-label="Send ' + escapeHtml(song.title) + ' to someone on WhatsApp">' + SEND_ICON + 'Send this song to someone</a>' : '<p class="catalog-note">Streaming link unavailable right now</p>') + '</div></aside>' +
           '</div></div></section>';
       }
 
@@ -1352,7 +1353,7 @@
             var action = release.url
               ? '<div class="series-links"><a class="catalog-link" href="' + release.url + '" target="_blank" rel="noopener">' + release.linkLabel + '</a>' + watchLink + (hasLyrics ? '<a class="catalog-link" href="' + getRouteContext().root + 'lyrics/' + release.id + '">Read lyrics</a>' : '') + '</div>' +
                 '<a class="catalog-dedication" href="' + dedicationHref(release.title, release.artist, release.url, release.youtubeUrl) + '" target="_blank" rel="noopener" aria-label="Send ' + release.title + ' to someone on WhatsApp">' + SEND_ICON + '<span>Send this song to someone</span></a>'
-              : '<div class="catalog-note">' + (release.releaseDate ? 'Releasing ' + release.releaseDate : release.status) + '</div>';
+              : (hasLyrics ? '<div class="series-links"><a class="catalog-link" href="' + getRouteContext().root + 'lyrics/' + release.id + '">Read lyrics</a></div>' : '') + '<div class="catalog-note">' + (release.note ? release.note : (release.releaseDate ? 'Releasing ' + release.releaseDate : release.status)) + '</div>';
             var art = release.artwork
               ? '<div class="catalog-art"><img src="' + release.artwork + '" alt="' + release.alt + '"></div>'
               : '<div class="catalog-art catalog-art--placeholder" aria-hidden="true"><span class="placeholder-kicker">' + release.status + '</span><strong>' + release.title + '</strong></div>';
