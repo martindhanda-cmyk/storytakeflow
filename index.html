@@ -309,6 +309,41 @@
     .lyrics-dedication { margin-top: 10px; }
     .custom-dedication { margin-top: 18px; }
 
+    .books .eyebrow { color: var(--gold-strong); }
+    .books-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(106,176,200,.25); border: 1px solid rgba(106,176,200,.25); }
+    .book-card { display: flex; flex-direction: column; padding: 27px; background: #0d151d; }
+    .book-cover { aspect-ratio: 2 / 3; overflow: hidden; margin: 0 0 20px; background: #040608; }
+    .book-cover--square { aspect-ratio: 1; }
+    .book-cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .book-card h3 { margin: 8px 0; font-size: clamp(21px, 2.4vw, 28px); line-height: 1.12; }
+    .book-card p { margin: 0 0 16px; color: #aeb8bd; font-size: 13px; line-height: 1.55; }
+    .book-actions { margin-top: auto; }
+    .book-actions .catalog-note { margin: 0; }
+
+    .christmas-album { background: #10110d; box-shadow: inset 0 5px 0 var(--gold-strong); }
+    .christmas-album .eyebrow { color: var(--gold-strong); }
+    .album-showcase { display: grid; grid-template-columns: 320px 1fr; gap: clamp(28px, 4vw, 52px); align-items: start; }
+    .album-cover { position: relative; aspect-ratio: 1; margin: 0; background: #040608; box-shadow: 0 18px 46px rgba(0,0,0,.5); }
+    .album-cover::after { content: ""; position: absolute; inset: 0; border: 1px solid rgba(240,201,79,.4); box-shadow: inset 0 0 40px rgba(0,0,0,.18); }
+    .album-cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .album-copy > p { color: #bfc7cb; font-size: 14px; line-height: 1.65; }
+    .album-credit { color: var(--muted); font-size: 12px; }
+    .tracklist { margin: 22px 0 18px; padding: 0; list-style: none; border-top: 1px solid var(--line); }
+    .tracklist li { display: grid; grid-template-columns: 42px 1fr auto; gap: 16px; align-items: baseline; padding: 10px 0; border-bottom: 1px solid var(--line); }
+    .track-number { color: var(--gold-strong); font-size: 11px; font-weight: 700; letter-spacing: .12em; }
+    .track-title { font-size: 15px; font-weight: 600; }
+    .track-tag { color: var(--terracotta-bright); font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+    .album-note { display: flex; flex-wrap: wrap; gap: 14px 20px; align-items: center; margin-bottom: 14px; }
+    .album-note .catalog-note { margin: 0; }
+    @media (max-width: 860px) {
+      .books-grid { grid-template-columns: 1fr; }
+      .album-showcase { grid-template-columns: 220px 1fr; }
+    }
+    @media (max-width: 520px) {
+      .album-showcase { grid-template-columns: 1fr; }
+      .album-cover { max-width: 280px; }
+    }
+
     .lyrics-promo { background: #10110d; box-shadow: inset 0 5px 0 var(--terracotta); }
     .lyrics-promo .eyebrow { color: var(--terracotta-bright); }
     .lyrics-promo .section-head { margin-bottom: 30px; }
@@ -672,6 +707,7 @@
       <a class="brand-mark" href="#hero-title" aria-label="Zoelife home"><img src="/assets/embedded/de0e70c954329443.png" alt="Zoelife — crowned portrait in a black-and-gold circular badge"></a>
       <nav class="nav-links" aria-label="Primary navigation">
         <a href="#stories">Stories</a>
+        <a href="#books">Books</a>
         <a href="#music">Music</a>
         <a class="nav-custom" href="custom-songs">Custom Songs</a>
         <a class="nav-lyrics" href="lyrics">Lyrics</a>
@@ -782,6 +818,39 @@
       </div>
     </section>
 
+    <section class="books" id="books" aria-labelledby="books-title">
+      <div class="wrap">
+        <div class="section-head" data-reveal>
+          <div class="eyebrow">The bookshelf</div>
+          <h2 id="books-title">Books by Martin Dhanda</h2>
+          <p>A novel, a teaching book and a Christmas story for the whole family — from the founder’s desk to your shelf.</p>
+        </div>
+        <div class="books-grid" data-reveal>
+          <article class="book-card">
+            <figure class="book-cover"><img src="/assets/the-river-remembers.jpg" alt="The River Remembers book cover"></figure>
+            <div class="catalog-kicker">Xaxamba Worlds · Book 1</div>
+            <h3>The River Remembers</h3>
+            <p>An original Afro-futurist epic — the first book of the Xaxamba Worlds. “Nothing true is ever lost.” Hardcover, $39.99. More editions coming soon.</p>
+            <div class="book-actions"><a class="catalog-link" href="https://www.amazon.com/dp/B0HRJST6Q8" target="_blank" rel="noopener">Buy the hardcover on Amazon ↗</a></div>
+          </article>
+          <article class="book-card">
+            <figure class="book-cover"><img src="/assets/the-urgency-of-jesus-warning-on-hell.jpg" alt="The Urgency of Jesus’ Warning on Hell book cover"></figure>
+            <div class="catalog-kicker">Kindle edition · Live now</div>
+            <h3>The Urgency of Jesus’ Warning on Hell</h3>
+            <p>Why the Savior Who Loves Us Warned Us Most — Martin Dhanda’s teaching on Jesus’ own words about hell. Available on Kindle.</p>
+            <div class="book-actions"><a class="catalog-link" href="https://www.amazon.com/s?k=The+Urgency+of+Jesus+Warning+on+Hell+Martin+Dhanda" target="_blank" rel="noopener">Find it on Amazon ↗</a></div>
+          </article>
+          <article class="book-card">
+            <figure class="book-cover book-cover--square"><img src="/assets/the-night-jesus-was-born.jpg" alt="The Night Jesus Was Born book cover"></figure>
+            <div class="catalog-kicker">Christmas picture book</div>
+            <h3>The Night Jesus Was Born</h3>
+            <p>A Christmas Story for Children and Families — the nativity told for young hearts, made to be read together.</p>
+            <div class="book-actions"><p class="catalog-note">Coming this weekend on Kindle</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <section class="music" id="music" aria-labelledby="music-title">
       <div class="wrap">
         <div class="section-head" data-reveal>
@@ -792,6 +861,41 @@
 
         <div id="featured-release"></div>
         <div class="catalog" id="music-catalog" aria-label="Storytakeflow music catalog" data-reveal></div>
+      </div>
+    </section>
+
+    <section class="christmas-album" id="christmas-album" aria-labelledby="christmas-album-title">
+      <div class="wrap">
+        <div class="section-head" data-reveal>
+          <div class="eyebrow">New album · Christmas songs for kids</div>
+          <h2 id="christmas-album-title">Merry Christmas! A Baby in Bethlehem</h2>
+          <p>The new children’s Christmas album from Storytakeflow — nine original songs that tell little ones the true story of the first Christmas.</p>
+        </div>
+        <div class="album-showcase" data-reveal>
+          <figure class="album-cover">
+            <img src="/assets/merry-christmas-baby-in-bethlehem.jpg" alt="Merry Christmas! A Baby in Bethlehem album cover — children gathered around the baby in the manger">
+          </figure>
+          <div class="album-copy">
+            <div class="release-state">Coming soon</div>
+            <p>Every song is original, written by Martin Dhanda from the Christmas story in Luke 1–2 and Matthew 1–2 — the angel’s good news, the baby in the manger, the shepherds running to see, and the wise men following the star. Made for children ages 3 to 8, and for the families who sing with them: bright, gentle and easy to learn, with words that stay true to the Bible.</p>
+            <ol class="tracklist" aria-label="Merry Christmas! A Baby in Bethlehem tracklist">
+              <li><span class="track-number">01</span><span class="track-title">Good News of Great Joy</span></li>
+              <li><span class="track-number">02</span><span class="track-title">Born in Bethlehem</span></li>
+              <li><span class="track-number">03</span><span class="track-title">A Baby in a Manger</span></li>
+              <li><span class="track-number">04</span><span class="track-title">Mary’s Lullaby</span></li>
+              <li><span class="track-number">05</span><span class="track-title">The Shepherds Run to See</span></li>
+              <li><span class="track-number">06</span><span class="track-title">Angels Singing Glory</span></li>
+              <li><span class="track-number">07</span><span class="track-title">Follow the Bright Star</span></li>
+              <li><span class="track-number">08</span><span class="track-title">Happy Birthday, Jesus</span></li>
+              <li><span class="track-number">09</span><span class="track-title">Little King in the Hay</span><span class="track-tag">Bonus track</span></li>
+            </ol>
+            <div class="album-note">
+              <p class="catalog-note">Coming soon to streaming — listening links will appear here on release day.</p>
+              <a class="btn btn-secondary" href="mailto:martin.d@storytakeflow.com?subject=Notify%20me%20when%20Merry%20Christmas!%20A%20Baby%20in%20Bethlehem%20is%20released">Notify Me</a>
+            </div>
+            <p class="album-credit">Artist: Storytakeflow · All songs written by Martin Dhanda</p>
+          </div>
+        </div>
       </div>
     </section>
 
